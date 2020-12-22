@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>upload video</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="vue.min.js"></script>
+    <script src="vue-resource.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.14.1/lib/index.js"></script>
+    <script src="upload.js" async></script>
+    <link rel="stylesheet" type="text/css" href="upload.css">
+</head>
+<body>
+
+<div id = "uploadBox">
+  <form id = "uploadfinal" name = "upload" action="/uploadfiles" method="post" enctype="multipart/form-data" target="hidden_frame">
+      <p>name <input type="text" name="name"></p>
+      <p>image<input type="file" accept="image/*" name="image"></p>
+      <p>video <input type="file" accept="video/*" name="video"></p>
+      <div id = "briefBox">
+        <p id = "brief">brief </p>
+        <textarea name="brief" rows="10" cols="40"></textarea>
+      </div>
+        <el-button v-on:click = "dialogVisible = true" type="primary" :loading="loading" id = "csubmit">{{ loading_message }}</el-button>
+        <div class="clear"></div>
+      <!-- <input type="button" v-on:click="change_to_index" id = "csubmit" value= "上传"> -->
+      <!-- <input id = "submit" type="submit" value="上传"> -->
+      <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <span>upload your files</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="button" @click="change_to_index">确 定</el-button>
+      </span>
+    </el-dialog>
+  </form>
+  <iframe name='hidden_frame' id="hidden_frame" style='display: none'></iframe>
+  
+</div>
+
+
+</body>
+</html>

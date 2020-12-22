@@ -1,0 +1,52 @@
+@import url("https://unpkg.com/element-ui@2.14.1/lib/theme-chalk/index.css");
+
+body{
+    text-align: left;
+}
+
+#uploadBox{
+    margin: 0 auto;
+    margin-top: 100px;
+    width:628px;
+    height: 500px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: lightgray;
+}
+
+form{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+input{
+    margin-left: 30px;
+}
+
+#brief{
+    position: relative;
+}
+
+textarea{
+    margin-left: 78px;
+    top: -40px;
+    position: relative;
+    border-style: solid;
+    border-radius: 5px; 
+    border-width: 1px;
+    border-color: lightgray;
+}
+
+#csubmit{
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+#upload_button{
+    width: 80px;
+    height: 40px;
+}
+.clear{
+    clear: both;
+}

@@ -1,0 +1,45 @@
+#app{
+    text-align: left;
+}
+
+.message{
+    width: 400px;
+}
+
+#saying_message{
+    width: 80%;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.demo-type{
+    max-width: 15%;
+    display: inline-block;
+}
+.demo-type img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+#description{
+   height: 100px;
+}
+
+body{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    /* border-color: black;
+    border-width: 1px;
+    border-style: solid; */
+}
+.showtime{
+    font-size: 4px;
+}
+video{
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: lightgray;
+    border-style: solid;
+}

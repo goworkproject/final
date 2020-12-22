@@ -1,0 +1,227 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app">
+    <el-button-group>
+      <el-button  v-on:click = "changetologin" type="primary" icon="el-icon-arrow-left">登录</el-button>
+      <el-button  v-on:click = "changetoregister" type="primary">注册<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+    </el-button-group>
+    <div id = "login" v-if = "l_or_r">
+      <el-input v-model="name" placeholder="请输入用户名" clearable ></el-input>
+      <el-input v-model="password" placeholder="请输入密码" clearable show-password ></el-input>
+      <el-button v-on:click = "login" type="primary" :loading="loading" class = "button">{{ loading_message }}</el-button>
+    </div>
+    <div id = "register" v-if = "!l_or_r">
+      <el-input v-model="rname" placeholder="请输入用户名" clearable ></el-input>
+      <el-input v-model="rpassword" placeholder="请输入密码" clearable show-password></el-input>
+      <el-input v-model="email" placeholder="请输入邮箱" clearable></el-input>
+      <el-button v-on:click = "register" type="primary" :loading="loading" class = "button">{{ loading_message1 }}</el-button>
+    </div>
+  </div>
+</body>
+
+  <script src="vue.min.js"></script>
+
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="vue-resource.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return{
+          name: '',
+          password:'',
+          rname:'',
+          rpassword:'',
+          loading:false,
+          email : '',
+          l_or_r: true,
+          loading_message: "登录",
+          loading_message1: "注册"
+        }
+      },
+      methods:{
+        login: function(){
+          this.$http.post('http://172.26.65.118:8080/api/signIn',{
+              nickname: this.name,
+              password: this.password,
+
+            },{
+              // emulateJSON: true
+            }).then(function(res){
+              console.log(res);
+              //tiaozhuan 
+
+              var url = "http://172.26.65.118:8080/html/index.html?id=" + res.body.data;
+              window.location.href = url;
+          });
+        },
+        register: function(){
+          this.loading = true;
+          this.loading_message1 = "玩命加载中";
+
+          this.$http.post('http://172.26.65.118:8080/api/signUp',{
+              nickname:  this.rname,
+              password:   this.rpassword,
+              email: this.email,
+            },
+            {
+              // emulateJSON: true
+            }).then(function(res){
+              console.log(res)
+          });
+        },
+        changetologin:function(){
+          this.loading_message = "登录";
+          this.loading = false;
+          this.l_or_r = true;
+        },
+        changetoregister:function(){
+          this.loading_message1 = "注册";
+          this.loading = false;
+          this.l_or_r = false;
+        }
+      }
+    })
+  </script>
+  <style>
+    #app {
+      text-align:center;
+      max-width: 300px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+  </style>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="all">
+    <div id="app">
+      <el-button-group>
+        <el-button  v-on:click = "changetologin" type="primary" v-bind:class = "{'change': !(l_or_r)}" icon="el-icon-arrow-left">登录</el-button>
+        <el-button  v-on:click = "changetoregister"  type="primary" v-bind:class = "{'change': l_or_r}" >注册<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+      </el-button-group>
+      <div id = "login" v-if = "l_or_r">
+        <el-input v-model="name" placeholder="请输入用户名" class = "input_box" clearable ></el-input>
+        <el-input v-model="password" placeholder="请输入密码" class = "input_box" clearable show-password ></el-input>
+        <el-button v-on:click = "login" type="primary" :loading="loading" class = "button">{{ loading_message }}</el-button>
+      </div>
+      <div id = "register" v-if = "!l_or_r">
+        <el-input v-model="rname" placeholder="请输入用户名" class = "input_box" clearable ></el-input>
+        <el-input v-model="rpassword" placeholder="请输入密码" class = "input_box" clearable show-password></el-input>
+        <el-input v-model="email" placeholder="请输入邮箱" class = "input_box" clearable></el-input>
+        <el-button v-on:click = "register" type="primary" :loading="loading" class = "button">{{ loading_message1 }}</el-button>
+      </div>
+    </div>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="vue.min.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="vue-resource.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return{
+          name: '',
+          password:'',
+          rname:'',
+          rpassword:'',
+          loading:false,
+          email : '',
+          l_or_r: true,
+          loading_message: "登录",
+          loading_message1: "注册"
+        }
+      },
+      methods:{
+        login: function(){
+          this.$http.post('http://172.26.65.118:8080/api/signIn',{
+              nickname: this.name,
+              password: this.password,
+
+            },{
+              // emulateJSON: true
+            }).then(function(res){
+              console.log(res);
+              //tiaozhuan 
+
+              var url = "http://172.26.65.118:8080/html/index.html?id=" + res.body.data;
+              window.location.href = url;
+          });
+        },
+        register: function(){
+          this.loading = true;
+          this.loading_message1 = "玩命加载中";
+
+          this.$http.post('http://172.26.65.118:8080/api/signUp',{
+              nickname:  this.rname,
+              password:   this.rpassword,
+              email: this.email,
+            },
+            {
+              // emulateJSON: true
+            }).then(function(res){
+              console.log(res)
+          });
+        },
+        changetologin:function(){
+          this.loading_message = "登录";
+          this.loading = false;
+          this.l_or_r = true;
+        },
+        changetoregister:function(){
+          this.loading_message1 = "注册";
+          this.loading = false;
+          this.l_or_r = false;
+        }
+      }
+    })
+  </script>
+  <style>
+    #app {
+      text-align:center;
+      max-width: 300px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+    #all{
+      text-align: center;
+      margin: 0 auto;
+      width: 500px;
+      height: 500px;
+      border-radius: 10px;
+      border-color: lightgray;
+      border-style: solid;
+      border-width: 2px;
+      transform: translateY(30%);
+      /* transform: translate(50%,50%); */
+    }
+    .input_box{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .change{
+      color: lightskyblue;
+      background-color: white;
+    }
+  </style>
+</html>
