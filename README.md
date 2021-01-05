@@ -49,6 +49,12 @@ go get https://github.com/goworkproject/final.git
 
   https://i.cnblogs.com/posts/edit-done;postId=14176115
 
+#### 视频地址
+
+<a href = "https://www.bilibili.com/video/BV1CT4y1T7vC">实验演示</a>
+
+
+
 #### API 接口语言(JavaScript)
 
 #### 登录
